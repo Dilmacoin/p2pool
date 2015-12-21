@@ -5,6 +5,7 @@ Generic:
 * Python >=2.6
 * Twisted >=10.0.0
 * python-argparse (for Python =2.6)
+* x11_hash (https://github.com/jakehaas/x11_hash)
 
 Linux:
 * sudo apt-get install python-zope.interface python-twisted python-twisted-web
@@ -23,9 +24,9 @@ Running P2Pool:
 To use P2Pool, you must be running your own local bitcoind. For standard
 configurations, using P2Pool should be as simple as:
 
-    python run_p2pool.py
+    python run_p2pool.py --net dilmacoin
 
-Then run your miner program, connecting to 127.0.0.1 on port 9332 with any
+Then run your miner program, connecting to 127.0.0.1 on port 4444 with any
 username and password.
 
 If you are behind a NAT, you should enable TCP port forwarding on your
@@ -37,7 +38,8 @@ Run for additional options.
 
 Donations towards further development:
 -------------------------
-    1HNeqi3pJRNvXybNX4FKzZgYJsdTSqJTbk
+    1HNeqi3pJRNvXybNX4FKzZgYJsdTSqJTbk (p2pool)
+    1GiRiNoKznfGbt8bkU1Ley85TgVV7ZTXce (girino/dilmacoin)
 
 Official wiki:
 -------------------------
