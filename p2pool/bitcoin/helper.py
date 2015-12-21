@@ -34,8 +34,10 @@ def check(bitcoind, net):
 def getwork(bitcoind, use_getblocktemplate=False):
     def go():
         if use_getblocktemplate:
+            print 'use_getblocktemplate', use_getblocktemplate
             return bitcoind.rpc_getblocktemplate(dict(mode='template'))
         else:
+            print 'bitcoind.rpc_getmemorypool'
             return bitcoind.rpc_getmemorypool()
     try:
         start = time.time()
