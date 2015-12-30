@@ -24,6 +24,6 @@ CONF_FILE_FUNC = lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'Dilma
 BLOCK_EXPLORER_URL_PREFIX = 'http://explorer.girino.org/block/'
 ADDRESS_EXPLORER_URL_PREFIX = 'http://explorer.girino.org/address/'
 TX_EXPLORER_URL_PREFIX = 'http://explorer.girino.org/tx/'
-SANE_TARGET_RANGE = (0, 2**256//2**20 - 1)
+SANE_TARGET_RANGE = (2**256//2**42, 2**256//2**20 - 1)
 DUMB_SCRYPT_DIFF = 1
 DUST_THRESHOLD = 0.001e8
