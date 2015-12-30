@@ -1,6 +1,3 @@
 [submodule "x11_hash"]
 	path = x11_hash
 	url = https://github.com/jakehaas/x11_hash.git
-[submodule "web-static"]
-	path = web-static
-	url = https://github.com/hardcpp/P2PoolExtendedFrontEnd.git
