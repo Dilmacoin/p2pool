@@ -149,7 +149,8 @@ class NewShare(object):
             else:
                 if known_txs is not None:
                     this_size = bitcoin_data.tx_type.packed_size(known_txs[tx_hash])
-                    if new_transaction_size + this_size > 50000: # only allow 50 kB of new txns/share
+                    max_tx_size = getattr(net.PARENT, 'MAX_STANDARD_TX_SIZE', 50000)
+                    if new_transaction_size + this_size > max_tx_size: # only allow 50 kB of new txns/share
                         break
                     new_transaction_size += this_size
                 new_transaction_hashes.append(tx_hash)
@@ -365,11 +366,13 @@ class NewShare(object):
             pass
         else:
             all_txs_size = sum(bitcoin_data.tx_type.packed_size(tx) for tx in other_txs)
-            if all_txs_size > 1000000:
+            max_block_size = getattr(self.net.PARENT, 'MAX_BLOCK_SIZE', 1000000)
+            if all_txs_size > max_block_size:
                 return True, 'txs over block size limit'
             
             new_txs_size = sum(bitcoin_data.tx_type.packed_size(known_txs[tx_hash]) for tx_hash in self.share_info['new_transaction_hashes'])
-            if new_txs_size > 50000:
+            max_tx_size = getattr(self.net.PARENT, 'MAX_STANDARD_TX_SIZE', 50000)
+            if new_txs_size > max_tx_size:
                 return True, 'new txs over limit'
         
         return False, None
@@ -469,7 +472,8 @@ class Share(object):
             else:
                 if known_txs is not None:
                     this_size = bitcoin_data.tx_type.packed_size(known_txs[tx_hash])
-                    if new_transaction_size + this_size > 50000: # only allow 50 kB of new txns/share
+                    max_tx_size = getattr(net.PARENT, 'MAX_STANDARD_TX_SIZE', 50000)
+                    if new_transaction_size + this_size > max_tx_size: # only allow 50 kB of new txns/share
                         break
                     new_transaction_size += this_size
                 new_transaction_hashes.append(tx_hash)
@@ -685,11 +689,13 @@ class Share(object):
             pass
         else:
             all_txs_size = sum(bitcoin_data.tx_type.packed_size(tx) for tx in other_txs)
-            if all_txs_size > 1000000:
+            max_block_size = getattr(self.net.PARENT, 'MAX_BLOCK_SIZE', 1000000)
+            if all_txs_size > max_block_size:
                 return True, 'txs over block size limit'
             
             new_txs_size = sum(bitcoin_data.tx_type.packed_size(known_txs[tx_hash]) for tx_hash in self.share_info['new_transaction_hashes'])
-            if new_txs_size > 50000:
+            max_tx_size = getattr(self.net.PARENT, 'MAX_STANDARD_TX_SIZE', 50000)
+            if new_txs_size > max_tx_size:
                 return True, 'new txs over limit'
         
         return False, None
