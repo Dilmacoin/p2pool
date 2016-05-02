@@ -15,7 +15,8 @@ RPC_CHECK = defer.inlineCallbacks(lambda bitcoind: defer.returnValue(
             'dilmacoinaddress' in (yield bitcoind.rpc_help()) and
             not (yield bitcoind.rpc_getinfo())['testnet']
         ))
-SUBSIDY_FUNC = lambda height: 24*100000000 >> (height + 1)//840000
+#SUBSIDY_FUNC = lambda height: 24*100000000 >> (height + 1)//840000
+SUBSIDY_FUNC = lambda height: 48*100000000 >> (height + 1)//525600
 POW_FUNC = lambda data: pack.IntType(256).unpack(__import__('x11_hash').getPoWHash(data))
 BLOCKHASH_FUNC = lambda data: pack.IntType(256).unpack(__import__('x11_hash').getPoWHash(data))
 BLOCK_PERIOD = 60 # s
